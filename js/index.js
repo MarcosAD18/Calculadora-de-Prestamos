@@ -7,6 +7,13 @@ let monto= parseFloat(document.querySelector("#monto").value);
     var interesf = interes/12/100;
     
     var total= monto* Math.pow(1+interesf,tiempo)*interesf/(Math.pow(1+interesf,tiempo)-1)
+    var totalf=(total*tiempo)-monto;
+
+    const formatter= new Intl.NumberFormat('en-US',{
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0
+    })
 
 if(!/^ *(?:-?\d+(?:\.\d+)?|) *$/.test(monto)||!/^ *(?:-?\d+(?:\.\d+)?|) *$/.test(interes)||!/^ *(?:-?\d+(?:\.\d+)?|) *$/.test(tiempo))
 {
@@ -27,13 +34,15 @@ else {
 
     alertaROJA.style.display="none";
     x.style.display = "block";
-    x.innerHTML='Tu cuota mensual es DOP'+"$"+" "+(total.toFixed(2))
-    
+    x.innerHTML='Tu cuota mensual es DOP'+"$"+" "+formatter.format(total)+"<br>"+ 
+    'Total de interes pagado es DOP '+"$"+" "+formatter.format(totalf);
     return false;
 }
 
 return false;
 }
+
+
 
 
 
