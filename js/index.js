@@ -10,8 +10,10 @@ let monto= parseFloat(document.querySelector("#monto").value);
 
 if(!/^ *(?:-?\d+(?:\.\d+)?|) *$/.test(monto)||!/^ *(?:-?\d+(?:\.\d+)?|) *$/.test(interes)||!/^ *(?:-?\d+(?:\.\d+)?|) *$/.test(tiempo))
 {
-    
+    var x = document.getElementById("alerta");   
     var alertaROJA= document.getElementById("alertaRoja");
+
+    x.style.display="none";
     alertaROJA.style.display="block";
     alertaROJA.innerHTML="Por Favor rellene todos los campos con valores adecuados"
 
@@ -20,15 +22,15 @@ if(!/^ *(?:-?\d+(?:\.\d+)?|) *$/.test(monto)||!/^ *(?:-?\d+(?:\.\d+)?|) *$/.test
 }
 else {
  
-    var x = document.getElementById("alerta");
+    var x = document.getElementById("alerta");   
+    var alertaROJA= document.getElementById("alertaRoja");
+
+    alertaROJA.style.display="none";
     x.style.display = "block";
     x.innerHTML='Tu cuota mensual es DOP'+"$"+" "+(total.toFixed(2))
     
     return false;
 }
-
-
-
 
 return false;
 }
